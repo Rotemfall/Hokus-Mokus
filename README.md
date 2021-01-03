@@ -1,7 +1,7 @@
-# Hokus Mokus
+# **Hokus Mokus**
 
 ## An Online store website for the Weasley's brothers from "Harry Potter"
-### Final group project for 'Information Systems' course in Tel Aviv University
+#### Final group project for 'Information Systems' course in Tel Aviv University
 <br/>
 
 #### Description: 
