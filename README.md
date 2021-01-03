@@ -1,30 +1,29 @@
-# Flask Skeleton Project
+# Hokus Mokus
 
-### Flask skeleton project as a base project for app development
-##### [https://github.com/barakpinchovski/flask-skeleton-project](https://github.com/barakpinchovski/flask-skeleton-project)
+## An Online store website for the Weasley's brothers from 'Harry Potter'
+##### Final group project for 'Information Systems' course in Tel Aviv University
 <br/>
 
 ##### Description: 
-This is a base skeleton Flask project to start developing on.
+This project is an online store website for the Weasly's brothers 'Hokus Mocus' store from 'Harry Potter'.
+This project was developed using python, flask, html, css, mysql and javascript.
 <br/>
-You may want to modify some of the configurations and files as needed. 
+ 
    
 ###
 ##### Keywords: 
-flask, lean, skeleton, project, structure, environment, setup, template, fullstack, web, development, app, university, education.
+project, flask, python, html, mysql, environment, web, development, university.
 ###
 
-##### By Barak Pinchovski
-[LinkedIn](https://www.linkedin.com/in/barakpinch/)
+##### By Rotem Fallek
+[LinkedIn](https://www.linkedin.com/in/rotem-fallek/)
 ##
  
 ### Setup and run instructions:
 
 #### Prerequisites:
-Open the project's dir in the terminal and run the following commands:
-1. pip install virtualenv
-1. virtualenv venv
-1. pip install python-dotenv
+pip install -r requiremenets.txt
+Run the script db/creation_script.sql in your MySQL database.
 <br/>
 
 #### Configurations:
