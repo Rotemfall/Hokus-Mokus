@@ -19,7 +19,6 @@ project, flask, python, html, mysql, environment, web, development, university.
 #### By Rotem Fallek
 [LinkedIn](https://www.linkedin.com/in/rotem-fallek/)
 ##
-<br/>
  
 ### Setup and run instructions:
 
