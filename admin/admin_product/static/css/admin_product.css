@@ -1,0 +1,80 @@
+* { box-sizing: border-box; }
+/*main screen*/
+.main-content{
+    display: inline-block;
+    width: 100%;
+    height: 100%; /* Full-height */
+    background-color: #272727;
+}
+.container{
+    margin-left: 200px; /* Same as the width of the sidebar */
+    width: auto;
+    display: inline-block;
+    padding: 2%;
+}
+.container-wrapper{
+    padding: 1%;
+}
+
+.button-add{
+    width: 6%;
+    margin-right: 5%;
+}
+.button-delete{
+    width: 100%;
+    margin-left: 3%;
+}
+.button-edit{
+    width: 100%;
+    margin-bottom: 50%;
+}
+.img-col{
+    position: relative;
+    max-width: 15%;
+    width: 15%;
+}
+.sku-col{
+    position: relative;
+    width: 10%;
+}
+.name-col{
+    position: relative;
+    width: 10%;
+}
+.price-col{
+    position: relative;
+    width: 5%;
+}
+.description-col{
+    position: relative;
+    width: 50%;
+}
+.category-col{
+    position: relative;
+    width: 10%;
+}
+.buttons-col{
+    position: relative;
+    max-width: 15%;
+    width: 15%;
+}
+
+table {
+    font-size: 65%;
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 84%;
+  text-align: center;
+  margin-left: 200px; /* Same as the width of the sidebar */
+  opacity: 0.95;
+  background-color: #272727;
+}
+.alert-alert-warning-alert-dismissible{
+    /*margin-left: 16.5%;
+    width: 83%;*/
+    margin-top: -3%;
+    margin-left: -1%;
+    width: 102%;
+}

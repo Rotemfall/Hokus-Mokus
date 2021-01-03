@@ -1,0 +1,87 @@
+*{box-sizing: border-box}
+div#header{
+    margin-left: 0; /* This page is different then all others- full width */
+    width: 100%;
+}
+.heading-1{
+    position:relative;
+    display: inline-block;
+    color: #ffecb3;
+    text-align: center;
+    font-size: 50px;
+    padding-bottom: 6%;
+}
+/*form*/
+form{
+    width: 50%;
+}
+.log-in-wrapper{
+    position:relative;
+    display: inline-block;
+    padding: 1%;
+    padding-top: 7%;
+    padding-bottom: 1%;
+    left: 33%;
+    width: 68%;
+}
+.log-in-form{
+    position:relative;
+    vertical-align: center;
+    display: inline-block;
+    padding: 2%;
+}
+input[type=text],input[type=password]{
+    width: 60%;
+    height: 5%;
+    float: right;
+}
+input[type=submit]{
+    width: 15%;
+    height: 7%;
+    float: right;
+}
+label{
+    position:relative;
+    display: inline-block;
+    padding: 1%;
+    padding-bottom: 5%;
+    padding-right: 5%;
+    font-size: 100%;
+}
+/*botton*/
+.button-default{
+    position:relative;
+    left: 1%;
+    height: 7%;
+    width: 15%;
+}
+
+button{
+    position:relative;
+    display: inline-block;
+    float: left;
+    margin-left: 0%;
+    margin-top: 1%;
+}
+/*footer*/
+footer{
+    position:relative;
+    text-align: center;
+    display: inline-block;
+    padding-top: 6%;
+    width: 84%;
+}
+.footer-copyright{
+    position:relative;
+    text-align: center;
+    display: inline-block;
+    right: 10%;
+}
+
+/*massages*/
+.alert-alert-warning-alert-dismissible{
+    display: inline-block;
+    margin-top: -3%;
+    margin-left: 17%;
+    width: 82%;
+}

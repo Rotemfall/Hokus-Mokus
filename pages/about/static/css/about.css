@@ -1,0 +1,22 @@
+.sign-in-right>li>p {
+  margin-left: 45%;
+}
+p, li, h1, h2{
+  margin-left: 2%;
+}
+p{
+    width: 55%;
+    list-style-type: circle;
+}
+h2{
+    margin-top: 2%;
+}
+a {
+    cursor: pointer;
+}
+.page-footer>.footer-address-phone>.middle-copyright{
+    margin-left: 23%;
+}
+.page-footer>div{
+    margin-left: 1%;
+}

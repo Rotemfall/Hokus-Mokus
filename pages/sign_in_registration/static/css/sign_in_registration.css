@@ -1,0 +1,57 @@
+*{box-sizing: border-box}
+
+.sign-in-block{
+    position:relative;
+    vertical-align: top;
+    left: 3%;
+}
+
+.registration-block {
+    position:relative;
+    left :1%;
+}
+
+.container{
+    vertical-align: center;
+    display: block;
+    padding: 3%;
+}
+
+aside{
+    vertical-align: center;
+    display: inline-block;
+    width: 49%;
+    padding:1%;
+}
+
+.button-default{
+    position:relative;
+    left: 3.5%;
+    padding: 1%;
+}
+
+.checkbox{
+    position:relative;
+    left: 4.5%;
+}
+
+.heading-1{
+    padding-top:3%;
+}
+
+.registration-form{
+    padding: 3%;
+    padding-bottom: 4%;
+    padding-left: 4%;
+}
+
+.sign-in-form{
+    padding: 3%;
+    padding-bottom:4%;
+    padding-left: 4%;
+}
+
+input[type=text],input[type=email], input[type=tel],input[type=number],input[type=password]{
+    width: 57%;
+    float: right;
+}

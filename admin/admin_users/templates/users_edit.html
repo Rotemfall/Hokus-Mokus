@@ -1,0 +1,77 @@
+{% extends 'base_Admin.html' %}
+{% set page_head_title = 'users_edit' %}
+
+{% block page_head_css %}
+    <link rel="stylesheet" href="{{ url_for('admin_users.static', filename='css/users_edit.css') }}"/>
+{% endblock %}
+
+{% block page_body_main_content %}
+     <div class="container">
+     {% with messages = get_flashed_messages() %}
+         {% if messages %}
+	        {% for message in messages %}
+		    <div class="alert-alert-warning-alert-dismissible" role="alert">
+			    {{message}}
+		    </div>
+		    {% endfor %}
+         {% endif %}
+     {% endwith %}
+        <form method=POST class="edit-form" action="{{ url_for('users_edit.index') }}" id="edit-form">
+            <div class="edit-form">
+                <h1 class="heading-1">Edit User</h1>
+            </div>
+            <a href="/user?id={{ user.email_address }}"></a>
+            <div class="edit-users-form">
+                <label for="email-address" >Email address:</label> <!-- not an editable option-->
+                <input type="text" name="email-address" value="{{ user.email_address }}" id="email-address" readonly/>
+            </div>
+            <div class="edit-users-form">
+                <label for="password">Password:</label>
+                <input type="text" name="password" value="{{ user.password }}" id="password" required/>
+            </div>
+            <div class="edit-users-form">
+                <label for="user-name">User name:</label>
+                <input type="text" name="user-name" value="{{ user.user_name }}" id="user-name" required/>
+            </div>
+            <div class="edit-users-form">
+                <label for="first-name">First name:</label>
+                <input type="text" name="first-name" value="{{ user.first_name }}" id="first-name" required/>
+            </div>
+            <div class="edit-users-form">
+                <label for="last-name">Last name:</label>
+                <input type="text" name="last-name" value="{{ user.last_name }}" id="last-name" required/>
+            </div>
+            <div class="edit-users-form">
+                <label for="country">Country:</label>
+                <input type="text" name="country" value="{{ user.country }}" id="country" required/>
+            </div>
+            <div class="edit-users-form">
+                <label for="city">City:</label>
+                <input type="text" name="city" value="{{ user.city }}" id="city" required/>
+            </div>
+            <div class="edit-users-form">
+                <label for="street">Street:</label>
+                <input type="text" name="street" value="{{ user.street }}" id="street" required/>
+            </div>
+            <div class="edit-users-form">
+                <label for="number">Number:</label>
+                <input type="text" name="number" value="{{ user.number }}" id="number" required/>
+            </div>
+            <div class="edit-users-form">
+                <label for="zip-code">Zip Code:</label>
+                <input type="text" name="zip-code" value="{{ user.zip_code }}" id="zip-code" required/>
+            </div>
+            <div class="edit-users-form">
+                <label for="phone-number">Phone number:</label>
+                <input type="text" name="phone-number" value="{{ user.phone_number }}" id="phone-number" required/>
+            </div>
+             <div class="edit-users-form">
+                <label for="role">Role:</label>
+                <input type="text" name="role" value="{{ user.role }}" id="role" required/>
+            </div>
+            <div>
+                <input type="submit" value="Submit" class="button-default" name="edit-users-form"/>
+            </div>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base_admin.html' %}
+
+{% set page_head_title = 'product_delete' %}
+
+{% block page_head_css %}
+    <link rel="stylesheet" href="{{ url_for('admin_product.static', filename='css/product_delete.css') }}"/>
+{% endblock %}
+{% block page_body_main_content %}
+
+    <div class="container">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+	        {% for message in messages %}
+		    <div class="alert-alert-warning-alert-dismissible" role="alert">
+			    {{message}}
+		    </div>
+		    {% endfor %}
+        {% endif %}
+    {% endwith %}
+        <form action="{{ url_for('product_delete.index') }}" method=POST class="delete-product-form" id="delete-form">
+            <div class="delete-form">
+                <h1 class="heading-1">Delete Product</h1>
+            </div>
+            <div class="delete-product-form">
+                <p> Are you sure you would like to delete product?</p>
+            </div>
+            <div>
+                <input type="submit" value="Delete" class="button-default" name="delete-product-form"/>
+                <input type=hidden value="{{ sku }}" name="sku"/>
+            </div>
+        </form>
+    </div>
+{% endblock %}

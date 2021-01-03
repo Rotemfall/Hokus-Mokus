@@ -1,0 +1,20 @@
+* {box-sizing: border-box;}
+.container-padding{
+    padding: 2%;
+}
+.input {
+    display: block;
+    position: relative;
+}
+form {
+    margin: auto;
+    width: 50%;
+    padding: 2%;
+}
+
+input[type=submit]{
+    margin-top: 14%;
+}
+textarea {
+    height: 10%;
+}

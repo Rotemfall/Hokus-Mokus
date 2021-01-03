@@ -1,0 +1,46 @@
+
+.main-product {
+  margin-left: 2%;
+}
+
+.main-product-details {
+  width: 35%;
+  float: left;
+}
+
+.main-product-image {
+  margin-left: 65%;
+}
+
+.main-reviews{
+    margin-left: 2%;
+    width: 80%;
+}
+.add-review{
+    width: 40%;
+}
+button, input[type=submit]{
+    margin-bottom: 5%;
+}
+form {
+    padding: 2%;
+}
+label, input[type=submit], #rank{
+    width: 35%;
+}
+
+input[type=text], textarea{
+    margin: 3%;
+    width: 55%;
+}
+textarea{
+    vertical-align: top;
+}
+
+.show-reviews{
+    margin-top: 1%;
+}
+.review-info{
+    font-style: italic;
+    font-size: 85%;
+}

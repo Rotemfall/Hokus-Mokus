@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% set page_head_title = 'Contact Us' %}
+
+{% block page_head_css %}
+    <link rel="stylesheet" href="{{ url_for('contact_us.static', filename='css/contact_us.css') }}"/>
+{% endblock %}
+
+{% block page_body_main_content %}
+<div class="container-padding">
+        <div class="top-block">
+            <h1 class="heading-1">Hello, <strong>fellow wizard!</strong></h1>
+            <h3 class="heading-3">Please provide your feedback below:</h3>
+        </div>
+        {% with messages = get_flashed_messages() %}
+	  {% if messages %}
+	    {% for message in messages %}
+		  <div class="alert alert-warning alert-dismissible" role="alert">
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+			{{message}}
+		  </div>
+		{% endfor %}
+	  {% endif %}
+	{% endwith %}
+    <div class="form-space">
+        <form method="post" id="feedback-form">
+            <div class="input">
+                <label class="input-email" for="email">Email address: *</label><br/>
+                <input type="email" class="form-control" placeholder="wizard@hogwarts.com" id="email" name="email" required/><!--DONE maybe add some * or something that the user will know thats require -->
+            </div>
+            <br/>
+            <div class="input">
+                <label class="input-subject" for="subject">Message subject: *</label> <!--Message-->
+                <select id="subject" name="subject" class="form-control">
+                    <option value="" hidden>Please Select Subject</option>
+                    <option value="product">Product</option>
+                    <option value="shipment">Shipment</option>
+                    <option value="website">website</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <br/>
+            <div class="input">
+                <label class="label-msg" for="message">Message: *</label>
+                <textarea name="message" id="message" class="form-control" required>Please type your message here</textarea>
+            </div>
+            <div class="button-input">
+                <input type="submit" value="Submit by Owl Post"/>
+                * Required Field
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

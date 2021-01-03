@@ -1,0 +1,43 @@
+* { box-sizing: border-box; }
+.container{
+    width: 84%;
+    margin-left: 200px; /* Same as the width of the sidebar */
+
+}
+form.add-form{
+    display: inline-block;
+    position: relative;
+    width: 35%;
+    margin-left: 32%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.add-product-form{
+    padding: 3%;
+    margin-left: 2%;
+}
+
+.heading-1{
+    font-size: 50px;
+    padding-top: 5%;
+
+}
+input{
+    position: relative;
+    display: inline;
+    vertical-align: center;
+    width: 60%;
+}
+.button-default{
+    display: inline-block;
+    position: relative;
+    float: right;
+    margin-right: 7%;
+    margin-bottom: 5%;
+    padding: 1%;
+}
+.alert-alert-warning-alert-dismissible{
+    margin-left: 0%;
+    width: 100%;
+}

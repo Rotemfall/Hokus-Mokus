@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+{% set page_head_title = 'Profile' %}
+
+{% block page_head_css %}
+    <link rel="stylesheet" href="{{ url_for('profile.static', filename='css/profile.css') }}"/>
+{% endblock %}
+
+{% block page_body_main_content %}
+    <div class="padding-left">
+    <div class="top-block">
+        <h1 class="heading-1">Profile <strong>Page</strong></h1>
+        <h3 class="heading-3">Hi {{ user[0].first_name }}, fellow wizard</h3>
+    </div>
+    {% with messages = get_flashed_messages() %}
+	  {% if messages %}
+	    {% for message in messages %}
+		  <div class="alert-alert-warning-alert-dismissible" role="alert">
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+			{{message}}
+		  </div>
+		{% endfor %}
+	  {% endif %}
+	{% endwith %}
+    <div class="nav" id="nav">
+        <h3 class="heading-3">Shortcuts</h3>
+            <a class=nav-link href="{{ url_for('.index', _anchor='order-block') }}">My Orders</a>
+            <a class=nav-link href="{{ url_for('.index', _anchor='personal-block') }}">Personal Information</a>
+            <a class=nav-link href="{{ url_for('.index', _anchor='address-block') }}">My Shipping Address</a>
+            <a class=nav-link href="{{ url_for('.index', _anchor='review-block') }}">My Reviews</a>
+            <a class=nav-link href="{{ url_for('.index', _anchor='password-block') }}">Change Password</a>
+            <a class=nav-link href="{{ url_for('.index', _anchor='credit-block') }}">Credit Card Data</a>
+            <a class=nav-link href="{{ url_for('.index', _anchor='delete-block') }}">Delete My Account</a>
+    </div>
+    <hr/>
+
+    <div class="block" id="order-block" name="order-block">
+        <h2 class="heading-2">My <strong>Orders</strong></h2>
+        <ul class="orders">
+            {% if user[0].img is  not none %}
+                {% for product in user %}
+                <li class="product">
+                    <a href="/product?id={{ product.sku }}">
+                        <img class="my-product-img" src="{{ url_for('product.static', filename=product.img) }}" alt="{{ product.name }}" border="1"/>
+                        <h4 class="heading-4">{{ product.product_name }}</h4>
+                        <p>Order ID: {{ product.order_id }}</p>
+                        <p>Date of Order: {{ product.date_of_order }}</p>
+                    </a>
+                </li>
+            {% endfor %}
+            {% else %}
+                <h4 class="heading-4"> You don't have any orders </h4>
+            {% endif %}
+        </ul>
+    </div>
+    <div class="block" id="personal-block">
+        <h2 class="heading-2">Personal <strong>Information</strong></h2>
+        <h4 class="heading-4" id="current-info">Name: {{ user[0].first_name}} {{ user[0].last_name }}</h4>
+        <h4 class="heading-4" id="current-info"> User Name: {{ user[0].user_name }}</h4>
+        <h4 class="heading-4" id="current-info"> Phone Number: {{ user[0].phone_number }}</h4>
+        <form method=POST class="info-form" action="{{ url_for('profile.index') }}">
+            <legend>If you wish to change your phone number</legend>
+            <div class="customer-form">
+                <label for="phone-number">New Phone number:</label>
+                <input type="tel" name="phone-number" placeholder="Phone number" id="phone-number" required minlength="10" maxlength="10"/>
+            </div>
+            <div class="customer-form">
+            <input type="submit" value="Change Phone Number"  name="info-form"/>
+            </div>
+        </form>
+    </div>
+    <div class="block" id="address-block">
+        <h2 class="heading-2">My <strong>Shipping</strong> Address</h2>
+        <h4 class="heading-4" id="current-address">Current Address: {{ user[0].city}}</h4>
+        <h4>Street: {{ user[0].street }} {{ user[0].number }} Zip Code: {{ user[0].zip_code }}</h4>
+        <h4>Country: {{ user[0].country }}</h4>
+        <form method=POST id="change-address" action="{{ url_for('profile.index') }}">
+            <legend>If you wish to update your shipping address, fill the address here:</legend>
+            <div class="customer-form">
+                <label for="country">Country: *</label>
+                <input type="text" class="input" name="country" id="country" required/>
+            </div>
+            <div class="customer-form">
+                <label for="city">City: *</label>
+                <input type="text" class="input" name="city" id="city" required/>
+            </div>
+            <div class="customer-form">
+                <label for="street">Street: *</label>
+                <input type="text" class="input" name="street" id="street" required/>
+            </div>
+            <div class="customer-form">
+                <label for="number">Number: *</label>
+                <input type="number" class="input" name="number" id="number" required/>
+            </div>
+            <div class="customer-form">
+                <label for="zip_code">Zip-code: *</label>
+                <input type="number" class="input" name="zip_code" id="zip_code" required minlength="7" maxlength="7"/>
+            </div>
+            <div class="customer-form">
+                <input type="submit" value="Change Shipping Address" name="change-address"/>
+            </div>
+        </form>
+    </div>
+    <div class="block" id="review-block">
+        <h2 class="heading-2">Recent <strong>Reviews</strong></h2>
+        {% for review in user %}
+            {% if review.content is not none %}
+                <div class="review">
+                    <p>Product: {{ review.product_name }}</p>
+                    <p>Review Date: {{ review.date }}</p>
+                    <p>Rank: {{ review.rank }}</p>
+                    <p>Review: {{ review.content }}</p>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div class="block" id="password-block">
+        <h2 class="heading-2"><strong>Password</strong></h2>
+        <form method=POST class="password-form" action="{{ url_for('profile.index') }}">
+            <legend>Enter your old and new passwords here:</legend>
+            <div class="customer-form">
+                <label for="old-password">Enter old password: *</label>
+                <input type="password" class="input" id="old-password" name="old-password" required/>
+            </div>
+            <div class="customer-form">
+                <label for="new-password">Enter new password: *</label>
+                <input type="password" class="input" id="new-password" name="new-password" required/>
+            </div>
+            <div class="customer-form">
+            <input type="submit" value="Change Password" name="password-form"/>
+            </div>
+        </form>
+    </div>
+    <div class="block" id="credit-block">
+        <h2 class="heading-2"><strong>Credit Card</strong> Data</h2>
+        <div class="current-credit">
+        <p>Current credit card expiration date: {{ user[0].expiration_date }}</p>
+        </div>
+        <form method=POST class="card-form" action="{{ url_for('profile.index') }}">
+            <legend>If you wish to add or change credit data, fill in your new card here:</legend>
+            <div class="customer-form">
+                <label for="credit">Card number: *</label>
+                <input type="number" class="input" id="credit" name="credit" required/>
+            </div>
+            <div class="customer-form">
+                <label for="exp">Expiration date: *</label>
+                <input placeholder="mm/yy" type="text" class="input" id="exp" name="exp" required/>
+            </div>
+            <div class="customer-form">
+                <label for="cvv">CVV: *</label>
+                <input type="number" class="input" name="cvv" id="cvv" required minlength="3" maxlength="3"/>
+            </div>
+            <div class="customer-form">
+                <input type="submit" value="Change Credit Card" name="card-form"/>
+            </div>
+        </form>
+    </div>
+    <div class="block" id="delete-block">
+        <h2 class="heading-2"><strong>Delete my Account</strong> Data</h2>
+        <div class="current-delete-user">
+        <p>You can delete your account in the website and all your data will be deleted.</p>
+            <p>You can't undo the action after you press the button your account will be erased.</p>
+            <form action="{{ url_for('profile.index') }}" method=POST class="delete-user">
+                <input type="hidden" name="_method" value="DELETE" />
+                <input type="submit" value="Delete entry" id="delete-user" name="delete-user" />
+            </form>
+        </div>
+</div>
+{% endblock %}

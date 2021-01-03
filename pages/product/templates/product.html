@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% set page_head_title = product.name %}
+
+{% block page_head_css %}
+    <link rel="stylesheet" href="{{ url_for('product.static', filename='css/product.css') }}"/>
+{% endblock %}
+{% block page_body_js %}
+    <script src="{{ url_for('product.static', filename='js/product.js') }}"></script>
+{% endblock %}
+
+{% block page_body_main_content %}
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-warning alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+            {{message}}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <div class="main-product">
+        <div class="main-product-details">
+            <aside>
+                 <h1 class = heading-1>{{ product.name }}</h1>
+            <p>{{ product.description }}</p>
+                <p>Price: {{ product.price }}£</p>
+                <div class="add-to-cart">
+                    <button>Add to Cart</button>
+                </div>
+            </aside>
+        </div>
+        <div class="main-product-image">
+            <aside>
+            <img src="{{ url_for('product.static', filename=product.img) }}" alt="{{ product.name }}" width="350" height="400"/>
+            </aside>
+        </div>
+
+    </div>
+    <div class="main-reviews">
+    <h2 class="heading-2">Rating & Reviews</h2>
+        <div class="add-review">
+            <button type="button" class="write-review-button" onclick="showReviewForm()">Write a review</button>
+            <form method=POST id="review-form">
+                <label for="rank">Rank: * </label>
+                <input type="number" id="rank" placeholder="Rank" name="rank" required>
+
+                <label for="review">Review: * </label>
+                <input type="text" id="review" placeholder="Review" name="review" required>
+                <input type="submit" value="Post review" name="submit-review">
+            </form>
+        </div>
+        <div class="show-reviews">
+            {% for review in reviews %}
+                <div class="show-reviews-details">
+                    <p class="review-info">Name: {{ review.user_name }}</p>
+                    <p class="review-info">date: {{ review.date }}</p>
+                </div>
+                <div class="show-reviews-content">
+                    <p>Rank: {{ review.rank }} </p>
+                    <p>{{ review.content }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

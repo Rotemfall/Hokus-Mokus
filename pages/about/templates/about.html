@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% set page_head_title = 'About' %}
+
+{% block page_head_css %}
+    <link rel="stylesheet" href="{{ url_for('about.static', filename='css/about.css') }}"/>
+{% endblock %}
+
+{% block page_body_main_content %}
+<div>
+<h1 class="heading-1">About <strong>us</strong></h1>
+    <p>Hokus Mokus, also known as Weasleys' Wizard Wheezes, was a joke shop located at Number 93 Diagon Alley
+        founded by Fred and George Weasley.
+The shop contained practical joke objects. This establishment started out as an 'owl-post service' led by the twins
+        from the Burrow, and later continued from Hogwarts, selling joke-products until the store front was opened.
+The shop was the Weasley twins' dream, they got the seed money for the shop from Harry Potte
+Fred participated in the Battle of Hogwarts (1998), defending the castle's passageways with his twin.
+    While fighting he was killed in an explosion.
+Today George and his younger brother Ron mange together the company and continue to bring laugh and joy to young wizards and muggles.</p>
+    </div>
+<div>
+    <h2 class="heading-2">We are here <strong>for you</strong></h2>
+    <p>We are here for any request, idea, complaint or even just to share a good joke.<br/>You can find us on:</p>
+    <ul>
+        <li><a href = "{{ url_for('contact_us.index') }}">Contact us page</a></li>
+        <li><a href = "tel:+44-0345-084-0900">+44-0345-084-0900</a></li>
+        <li><a href = "mailto: hokusmokus2020@gmail.com">Email</a></li>
+        <li><a href="https://www.facebook.com/hokus.mokus.9">Facebook</a></li>
+        <li>Your owl will always find us</li>
+    </ul>
+</div>
+{% endblock %}

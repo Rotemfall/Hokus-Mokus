@@ -1,0 +1,130 @@
+@import "variables.css";
+
+* { box-sizing: border-box; }
+.heading-1 {
+    color: #ffecb3;
+    font-size: 250%;
+    font-weight: 300;
+}
+.heading-1 strong{
+    color: #FF652F;
+}
+.heading-2 {
+    color: #ffecb3;
+    font-size: 200%;
+    font-weight: 300;
+}
+.heading-2 strong{
+    color: #FF652F;
+}
+.heading-3 {
+    color:  #ffecb3;
+    font-size: 150%;
+    font-weight: 300;
+}
+.heading-4 {
+    color:  #ffecb3;
+    font-size: 100%;
+    font-weight: 300;
+}
+.heading-4 strong{
+    color: #FF652F;
+}
+P {
+    color: #ffecb3;
+    font-size: 90%;
+}
+.page-header {
+    position: sticky;
+    top:0;
+    z-index: 1;
+    background-image: url("/static/img/background/header.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding-top: 30px;
+    opacity: 0.9;
+    border-bottom: 1px solid #ffecb3;
+}
+.sign-in-right {
+    position: relative;
+    display: inline;
+	color: #ffecb3;
+	font-size: 20px;
+	text-align: right;
+    right: 19px;
+}
+.logo-header {
+    display: inline;
+    width: 25%;
+    float: left;
+    top: -15px;
+    border-radius: 10%;
+    position: relative;
+    z-index: 1;
+}
+body {
+    /*TODO: we can use this insted variables.css */
+    /*margin: 0;*/
+    /*font-family: Tahoma, serif;*/
+    background-image: url("/static/img/background/background-book-darker.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: #272727;
+    font-size: 20px;
+    color: #ffecb3;
+    text-shadow: 1px 1px #272727;
+    line-height: 1.5;
+    bottom: 0px;
+}
+html body{
+    cursor: url('https://img.icons8.com/cotton/64/000000/witch-broom.png') 60 0, auto !important;
+}
+.page-footer{
+    float: left;
+    display: block;
+    font-size:36px;
+    width: 100%;
+    border-top: 1px solid #ffecb3;
+}
+.material-icons {
+    font-size: 36px;
+    position: relative;
+    top: 6px;
+    left: 6px;
+}
+.footer-address-phone {
+    display: block;
+    position: relative;
+    color: #ffecb3;
+    font-size: 20px;
+}
+.middle-copyright{
+    text-align: center;
+    position: relative;
+}
+.main-menu {
+    width: 100%;
+}
+button, input[type=submit]{
+    background-color: #272727;
+    color: #ffecb3;
+    border-color: #ffecb3;
+}
+form{
+    border-style: solid;
+    border-color: #ffecb3;
+    background-color: #272727;
+}
+textarea, input[type=text],input[type=email], input[type=tel],input[type=number],input[type=password]{
+    color: #272727;
+}
+a:-webkit-any-link {
+    color: #ffecb3;
+    cursor: pointer;
+}
+
+li{
+    list-style-type: none;
+}

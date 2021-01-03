@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% set page_head_title = 'Categories' %}
+
+{% block page_head_css %}
+    <link rel="stylesheet" href="{{ url_for('categories.static', filename='css/categories.css') }}"/>
+{% endblock %}
+
+{% block page_body_main_content %}
+
+    <div>
+        <h1 class="heading-1">Products <strong>Categories</strong></h1>
+    </div>
+    <div class="categories-main"><!-- Wrapper for all categories -->
+    <!-- All asides will be next to each other -->
+        {% for category in categories %}
+        <aside class= "col">
+            <div class="category-name">
+                <h2 class="heading-2">{{ category.name }}</h2>
+            </div>
+            <div>
+                <a href="/catalog?id={{ category.code }}"><img border="0" alt="cat" src="{{ url_for('categories.static', filename=category.img) }}" /></a>
+            </div>
+        </aside>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% set page_head_title = 'sign_in_registration' %}
+
+{% block page_head_css %}
+    <link rel="stylesheet" href="{{ url_for('sign_in_registration.static', filename='css/sign_in_registration.css') }}"/>
+{% endblock %}
+{% block page_body_main_content %}
+    {% with messages = get_flashed_messages() %}
+	  {% if messages %}
+	    {% for message in messages %}
+		  <div class="alert alert-warning alert-dismissible" role="alert">
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+			{{message}}
+		  </div>
+		{% endfor %}
+	  {% endif %}
+	{% endwith %}
+    <div class="container">
+        <aside class="sign-in-block">
+                <form method=POST class="sign-in-form" id="sign-in-form">
+                    <div class="sign-in-form">
+                        <h1 class="heading-1">Already Registered?</h1>
+                    </div>
+                    <div class="sign-in-form">
+                        <label for="email-address" >Email address:</label>
+                        <input type="email" name="email-address" placeholder="Email address" id="email-address"  required/>*
+                    </div>
+                    <div class="sign-in-form">
+                        <label for="pwd">Password:</label>
+                        <input type="password" name="password" placeholder="Password" id="pwd" required/>*
+                    </div>
+                    <div>
+                        <input type="submit" value="Submit" class="button-default" name="sign-in-form"/>
+                    </div>
+                </form>
+        </aside>
+        <aside class="registration-block">
+                <form method=POST class="registration-form" id="sign-in-form">
+                    <div class="registration-form">
+                        <h1 class="heading-1">New to Hokus Mokus?</h1>
+                    </div>
+                    <div class="registration-form">
+                        <label for="user-name">User name:</label>
+                        <input type="text" name="user-name" placeholder="User name" id="user-name" required/>*
+                    </div>
+                    <div class="registration-form">
+                    <label for="email-address">Email address:</label>
+                        <input type="email" name="email" placeholder="Email address" id="email-address" required/>*
+                    </div>
+                    <div class="registration-form">
+                        <label for="pwd">Password:</label>
+                        <input type="password" name="password" placeholder="Password" id="pwd" required/>*
+                    </div>
+                    <div class="registration-form">
+                        <label for="first-name">First name:</label>
+                        <input type="text" name="first-name" placeholder="First name" id="first-name" maxlength="10" required/>*
+                    </div>
+                    <div class="registration-form">
+                        <label for="last-name">Last name:</label>
+                        <input type="text" name="last-name" placeholder="Last name" id="last-name" maxlength="20" required/>*
+                    </div>
+                    <div class="registration-form">
+                        <label for="country">Country:</label>
+                        <input type="text" name="country" placeholder="Country" id="country" maxlength="50" required/>*
+                    </div>
+                    <div class="registration-form">
+                        <label for="city">City:</label>
+                        <input type="text" name="city" placeholder="City" id="city" maxlength="50" required/>*
+                    </div>
+                    <div class="registration-form">
+                        <label for="street">Street:</label>
+                        <input type="text" name="street" placeholder="Street" id="street" maxlength="50" required/>*
+                    </div>
+                    <div class="registration-form">
+                        <label for="number">Number:</label>
+                        <input type="number" name="number" placeholder="Number" id="street-number" required/>*
+                    </div>
+                    <div class="registration-form">
+                        <label for="zip-code">Zip code:</label>
+                        <input type="number" name="zip-code" placeholder="Zip code" id="zip-code" minlength="7" maxlength="7" required/>*
+                    </div>
+                    <div class="registration-form">
+                        <label for="phone-number">Phone number:</label>
+                        <input type="tel" name="phone-number" placeholder="Phone number" id="phone-number" required minlength="10" maxlength="10"/>*
+                    </div>
+                    <div>
+                        <input type="submit" value="Submit" class="button-default"/>
+                    </div>
+                </form>
+        </aside>
+        </div>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+* {box-sizing: border-box;}
+
+ul {
+    list-style-type: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+li{
+    padding-bottom: 3%;
+    padding-top: 3%;
+}
+
+hr{
+    color: #ffecb3;
+}
+
+img{
+    display: inline-block;
+    width: 20%;
+    border-radius: 10%;
+}

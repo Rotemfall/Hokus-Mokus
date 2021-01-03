@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+
+{% set page_head_title = 'Homepage' %}
+
+{% block page_head_css %}
+    <link rel="stylesheet" href="{{ url_for('homepage.static', filename='css/homepage.css') }}"/>
+    <!-- jQuery -->
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<!-- BS JavaScript -->
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<!-- Have fun using Bootstrap JS -->
+    <script>
+        function show_popup()
+        {
+          document.getElementById('popup').style.display = 'block';
+        }
+        window.onload = show_popup;
+        //Close modal
+        function closeDialog(element)
+        {
+            var modal = document.getElementById("popup");
+	        modal.style.display = "none";
+        }
+        // Close when click oitside the modal ----> DOESNT WORK
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+{% endblock %}
+
+{% block page_body_main_content %}
+<main>
+{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+	    {% for message in messages %}
+		  <div class="alert-alert-warning-alert-dismissible" role="alert">
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+			{{message}}
+		  </div>
+		{% endfor %}
+	  {% endif %}
+	{% endwith %}
+    <div class="contain-img">
+        <img src="/static/img/img-home-page/weaslys_shorter.jpg" alt="Home Page Image" class="center-img-home-page"/>
+        <div class="top-left">
+            <h1 class="heading-1"><strong>Hokus Mokus</strong> | Weaslys' Wizard Wheezes Shop</h1>
+        </div>
+    </div>
+
+    <div id="popup" class="popup">
+        <span class="close" onclick="closeDialog(this)">&times;</span><br/>
+        <h1 class="heading-1 modal-heading">Hokus Mokus <strong>SALE!</strong></h1>
+        <h2 class="heading-2 modal-heading"> Product of the <strong>week</strong></h2>
+        <a href = "{{ url_for('product.index') }}">
+            <img class="sale-product" src="/static/img/products/extendable_ear.jpg" alt="product2"/>
+            <p class="modal-text"><strong>ONLY</strong> <span>£15.00</span></p>
+        </a>
+    </div>
+
+    <div class="container">
+        <h2 class="heading-2">Hokus Mokus <strong>Products</strong></h2>
+        <div id="myCarousel" class="carousel slide"> {# 'slide'- makes the items to slide #}
+            <div class="carousel-inner"> {# responsive on the inner carousel #}
+                <div class="item carousel-item active">
+                    <div class="col-sm-3">
+                        <div class="img-box">
+                            <img src="/static/img/products/product1.jpg" alt="product1"/>
+                        </div>
+                        <h4 class="heading-4">Fever Fudge</h4>
+                            <p class="item-price"><del>£45.00</del> <span>£39.90</span></p>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="img-box">
+                            <a href = "{{ url_for('product.index') }}">
+                                <img src="/static/img/products/extendable_ear.jpg" alt="product2"/>
+                            </a>
+                        </div>
+                        <h4 class="heading-4">Extendable Ear</h4>
+                            <p class="item-price"><del>£25.00</del> <span>£15.00</span></p>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="img-box">
+                            <img src="/static/img/products/product3.jpg" alt="product3"/>
+                        </div>
+                        <h4 class="heading-4">Sticky Trainers</h4>
+                            <p class="item-price"><del>£89.00</del> <span>£69.00</span></p>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="img-box">
+                            <img src="/static/img/products/product4.jpg" alt="product4"/>
+                        </div>
+                        <h4 class="heading-4">Smelly Candle</h4>
+                            <p class="item-price"><del>£315.00</del> <span>£250.00</span></p>
+                    </div>
+                </div>
+                <div class="item carousel-item">
+                    <div class="col-sm-3">
+                        <div class="img-box">
+                            <img src="/static/img/products/product5.jpg" alt="product5"/>
+                        </div>
+                        <h4 class="heading-4">No Poo Bottle</h4>
+                            <p class="item-price"><del>£29.00</del> <span>£19.99</span></p>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="img-box">
+                            <img src="/static/img/products/product6.jpg" alt="product6"/>
+                        </div>
+                        <h4 class="heading-4">Special Girl</h4>
+                            <p class="item-price"><del>£29.90</del> <span>£19.90</span></p>
+                    </div>
+                     <div class="col-sm-3">
+                        <div class="img-box">
+                            <a href="{{ url_for('product.index') }}">
+                                <img src="img/products/peruvian_instant_darkness_powder.jpg" alt="Peruvian Instant Darkness Powder"/>
+                            </a>
+                        </div>
+                        <h4 class="heading-4">Peruvian Instant Darkness Powder</h4>
+                            <p class="item-price"> <span>£35.00</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel controls -->
+            <a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
+                <i class="fa fa-angle-left"></i>
+            </a>
+            <a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        </div>
+    </div>
+</main>
+{% endblock %}

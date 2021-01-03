@@ -1,0 +1,37 @@
+.container{
+    width: 84%;
+}
+form.add-form{
+    position: relative;
+    display: inline-block;
+    width: 35%;
+    margin-left: 41%;
+    margin-top:4%;
+    margin-bottom: 3%;
+}
+.add-categories-form{
+    padding: 3%;
+    margin-left: 6%;
+}
+.heading-1{
+    font-size: 50px;
+    padding-top: 5%;
+}
+
+input{
+    position: relative;
+    display: inline;
+    width: 65%;
+}
+.button-default{
+    display: inline-block;
+    position: relative;
+    float: right;
+    margin-right: 8%;
+    margin-bottom: 5%;
+    padding: 2%;
+}
+.alert-alert-warning-alert-dismissible{
+    margin-left: 10%;
+    width: 100%;
+}

@@ -1,0 +1,141 @@
+{#
+Base page variables:
+- page_lang | default: 'en'
+- page_head_title_brand | default: 'Hokus Mokus'
+- page_head_title | default: 'Flask skeleton project'
+#}
+
+{#
+Base page blocks:
+- head
+-- page_head
+-- page_head_meta
+--- page_head_meta_extra
+-- page_head_css
+
+- body
+-- page_body_content
+--- page_body_header
+---- page_body_header_content
+----- page_body_header_content__main_menu
+------ page_body_header_content__main_menu_content
+------- page_body_header_content__main_menu_content_links
+--- page_body_main
+---- page_body_main_content
+--- page_body_footer
+---- page_body_footer_content
+-- page_body_js
+ #}
+<!DOCTYPE html>
+ <html lang="{{ page_lang|default("en", true) }}">
+    <head>
+    {% block page_head %}
+        {# Title #}
+        <title>{{ page_head_title_brand|default('Hokus Mokus', true) }} | {{ page_head_title|default('Flask skeleton project', true) }}</title>
+
+        {# Meta tags #}
+        {% block page_head_meta %}
+            <meta charset="UTF-8"/>
+            <meta name="author" content="Hadar, Rotem, Jonathan, Gil"/>
+            <meta name="description" content="Flask skeleton project about Hokus Mokus Shop"/>
+            <meta name="keywords" content="flask, lean, skeleton, project, structure, environment, setup, template, fullstack, web, development, app, university, education"/>
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+{#            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">#}
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> <!--carousel and menu-->
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> <!--for the login icon-->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!--cursor-->
+            <!-- for the slide action-->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> <!--fonts-->
+            <script src='https://kit.fontawesome.com/a076d05399.js'></script><!--for the icons-->
+            {% block page_head_meta_extra %}{% endblock %}
+        {% endblock %}
+
+        {# favicon #}
+        <link rel="icon" href="{{ url_for('static', filename='media/img/favicon/favicon2.png') }}"/>
+
+        {# Base #}
+{#        TODO: check base tag up in this page#}
+        <base href="{{ url_for('static', filename="group1")}}"/>
+
+        {# CSS #}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}"/>
+        {% block page_head_css %}{% endblock %}
+    {% endblock %}
+    </head>
+    <body>
+        {% block page_body_content %}
+
+            {# Header #}
+            {% block page_body_header %}
+                <header class="page-header">
+                    {% block page_body_header_content %}
+                    <div class="logo-header">
+                        <a href = "{{ url_for('homepage.index') }}" title="Hokus Mokus Home Page">
+                            <img class="logo-header" alt="Hokus Mokus Logo" src="/static/img/logo/logo.png"/>
+                        </a>
+                    </div>
+                        <div class="sign-in-right">
+                        {% if session.logged_in %}
+                            <li>
+                                <p>Hello {{ session['user']['first_name'] }}, <a href="{{ url_for('logout.index') }}">Logout</a></p>
+                            </li>
+                        {% else %}
+                            <li>
+                                <p>Hello Guest, <a href="{{ url_for('sign_in_registration.index') }}">Login / Register</a></p>
+                            </li>
+                        {%  endif %}
+                        </div>
+                        {# Main Menu #}
+                        {% block page_body_header_content__main_menu %}
+                            <nav class="main-menu">
+                                {% block page_body_header_content__main_menu_content %}
+                                    <ul>
+                                        {% block page_body_header_content__main_menu_content_links %}
+                                            {% include 'main_menu.html' %}
+                                        {% endblock %}
+                                    </ul>
+                                {% endblock %}
+                            </nav>
+                        {% endblock %}
+
+                    {% endblock %}
+                </header>
+            {% endblock %}
+
+            {# Main #}
+            {% block page_body_main %}
+                <main class="page-main">
+                  {% block page_body_main_content %}
+                  {% endblock %}
+                </main>
+            {% endblock %}
+
+            {# Footer #}
+            {% block page_body_footer %}
+                <footer class="page-footer">
+                  {% block page_body_footer_content %}
+                            <div>
+                                <a class='material-icons' href = "{{ url_for('profile.index') }}" title="Profile">&#xe7fd;</a>
+                                <a class='fas' href="{{ url_for('contact_us.index') }}" title="Contact Us">&#xf658;</a>
+                                <a class="fas fa-phone-square-alt" href="tel:+4403450840900" title="Phone"></a>
+                                <a class='fas fa-envelope' href = "mailto: hokusmokus2020@gmail.com" title="Mail" target="_blank"></a>
+                                <a class='fab fa-facebook' href="https://www.facebook.com/hokus.mokus.9" title="Facebook" target="_blank"></a>
+                            </div>
+                            <div class="footer-address-phone">
+                                <p >Address: London, Number 93 Diagon Alley</p>
+                                <p>Phone: +44-0345-084-0900 </p>
+                                <p class="middle-copyright">Copyright © 2020-2035 Hokus Mokus Inc. All Rights Reserved.</p>
+                            </div>
+                  {% endblock %}
+                </footer>
+            {% endblock %}
+        {% endblock %}
+
+        {# JS #}
+        <script src="{{ url_for('static', filename='js/base.js') }}"></script>
+        {% block page_body_js %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,209 @@
+@import "variables.css";
+
+/*general*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+P {
+    color: #ffecb3;
+    font-size: 90%;
+}
+/*header*/
+div#header{
+    margin-left: 200px; /* Same as the width of the sidebar */
+    margin-bottom: 1%;
+    width: 84%;
+    height: 50px;
+    background-color: #FF652F;
+    opacity: 0.95;
+    float: right;
+}
+p#header{
+    margin-top: 0%;
+    margin-left: 0%;
+    margin-bottom: 1%;
+    font-size:20px;
+    color:#272727;
+    text-shadow: 0.5px 0.5px #272727;
+    padding: 1%;
+}
+div#container .page-main{
+    width: 100%;
+    height: 100%; /* Full-height */
+}
+
+/*sidebar*/
+.sidebar{
+    height: 100%; /* Full-height */
+    width: 200px;
+    position: fixed; /* Fixed Sidebar (stay in place while scrolling) */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: rgba(61, 60, 60, 0.45);
+    overflow-x: hidden; /* Disable horizontal scroll */
+    border-right: 0.5px solid #ffecb3;
+    padding-top: 20px;
+}
+.welcome{
+    display: flex;;
+    justify-content: center;
+
+    padding-bottom: 40%;
+    font-size: 140%;
+}
+ul#nav li {
+    list-style: none;
+    margin-left: -22; /*to try and fix it*/
+}
+ul#nav li a{
+    color: #ffecb3;
+    display: block;
+    padding: 8%;
+    border-bottom-color: #ffecb3;
+    border-bottom: 1px solid;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+}
+ul#nav li a:hover{
+    background-color: #272727;
+    color: #ffecb3;
+    padding-left: 10%;
+}
+ul#nav li a.selected{
+    background-color: #272727;
+    color: #ffecb3;
+}
+
+/*headlines*/
+.heading-1{
+    color: #ffecb3;
+    text-align: center;
+    font-size: 75px;
+    display: block;
+    padding: 1%;
+    padding-top: 3%;
+    padding-bottom: 5%;
+}
+.heading-1 strong{
+    color: #FF652F;
+}
+.heading-2 {
+    color: #ffecb3;
+    font-size: 200%;
+    font-weight: 300;
+}
+
+/*main*/
+body {
+    /*TODO: we can use this instead variables.css */
+    /*margin: 0;*/
+    /*font-family: Tahoma, serif;*/
+    background-position: center;
+    background-color: #272727;
+    font-size: 20px;
+    color: #ffecb3;
+    text-shadow: 0.5px 0.5px #272727;
+    line-height: 1.5;
+    bottom: 0px;
+}
+.container{
+    background-color: #272727;
+}
+
+/*form*/
+form{
+    border-style: solid;
+    border-color: #ffecb3;
+    background-color: #333333;
+}
+button, input[type=submit], input[type=button]{
+    background-color: #272727;
+    color: #ffecb3;
+    border-color: #ffecb3;
+}
+textarea, input[type=text],input[type=email], input[type=tel],input[type=number],input[type=password]{
+    color: #272727;
+}
+lable{
+    position: relative;
+    display: inline;
+    font-color: #ffecb3;
+}
+
+/*footer
+footer{
+    position: absolute;
+    text-align: center;
+    display: inline-block;
+    padding-top: 1%;
+    margin-left: 200px;
+    width: 84%;
+    opacity: 0.95;
+}
+*/
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 84%;
+  text-align: center;
+  margin-left: 200px; /* Same as the width of the sidebar */
+  opacity: 0.95;
+  background-color: #272727;
+}
+/*table*/
+table, th, td {
+  border: 1px solid #ffecb3;
+  border-collapse: collapse;
+  background-color: #303030;
+  /*margin-top: 3%;
+  margin-left: 3%;
+  margin-bottom: 3%;*/
+}
+table{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5%;
+}
+th, td {
+  padding: 1%;
+  text-align: left;
+}
+.button-edit{
+    position: relative;
+    height: 100%;
+    width: 45%;/**/
+    background-color: #272727;
+}
+.button-delete{
+    position: relative;
+    height: 100%;
+    width: 45%;/**/
+    margin-left: 5%;/**/
+    background-color: #f4622f;
+}
+.button-add{
+    position:relative;
+    display: inline-block;
+    float:right;
+    height: 5%;
+    width: 17.5%;/**/
+    background-color: #549d27;
+    margin-right: 7%;/**/
+    margin-bottom: 2%; /**/
+}
+.alert-alert-warning-alert-dismissible{
+    position: relative;
+    display: inline-block;
+    color: #272727;
+    background-color: rgba(255, 236, 179, 0.75);
+    border: 1px #ffecb3;
+    border-radius: 5px;
+    margin-left: 1%;
+    width: 98%;
+    height: 6%;
+}

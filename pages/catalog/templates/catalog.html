@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% set page_head_title = 'Catalog' %}
+
+{% block page_head_css %}
+    <link rel="stylesheet" href="{{ url_for('catalog.static', filename='css/catalog.css') }}"/>
+{% endblock %}
+
+{% block page_body_main_content %}
+
+    <div class="top-block"> <!--Title and sub-title-->
+        <h1 class="heading-1"><strong>Products</strong></h1>
+        <h2 class="heading-2">Magic is only a click away... Expecto patronum!</h2>
+    </div>
+    <hr/>
+    <div class="product-list-area">
+        <ul class="product-list"> <!--List of products-->
+            {% for product in products %}
+            <a href="/product?id={{ product.category_code }}">
+            <li class="product">
+                <a href=""> <!--The picture, description and price are all links to one page-->
+                     <a href="/product?id={{ product.sku }}"><img src="{{ url_for('product.static', filename=product.img) }}" border="0" alt="{{ product.name }}"/>
+                    <h3 class="heading-3">{{ product.name }}</h3>
+                    <p>Price: £{{ product.price }}</p>
+                </a>
+            </li>
+            </a>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <hr>
+
+{% endblock %}
+
+{% block page_body_footer %}{% endblock %}
+
+{% block page_body_js %}
+    <script src="{{ url_for('catalog.static', filename='js/catalog.js') }}"></script>
+{% endblock %}

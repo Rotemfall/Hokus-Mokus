@@ -1,0 +1,53 @@
+{% extends 'base_Admin.html' %}
+
+{% set page_head_title = 'product_add' %}
+
+{% block page_head_css %}
+    <link rel="stylesheet" href="{{ url_for('admin_product.static', filename='css/product_add.css') }}"/>
+{% endblock %}
+{% block page_body_main_content %}
+
+    <div class="container">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+		    <div class="alert-alert-warning-alert-dismissible" role="alert">
+			    {{message}}
+		    </div>
+		    {% endfor %}
+        {% endif %}
+    {% endwith %}
+        <form method=POST class="add-form" id="add-form">
+            <div class="add-form">
+                <h1 class="heading-1">Add Product</h1>
+            </div>
+            <div class="add-product-form">
+                <label for="sku" >Sku:</label>
+                <input type="number" name="sku" placeholder="Sku" id="sku" max="4294967295" required/>
+            </div>
+            <div class="add-product-form">
+                <label for="name">Name:</label>
+                <input type="text" name="name" placeholder="Name" id="name" maxlength="50" required/>
+            </div>
+            <div class="add-product-form">
+                <label for="price">Price:</label>
+                <input type="number" name="price" placeholder="Price" id="price" max="65535" required/>
+            </div>
+            <div class="add-product-form">
+                <label for="description">Description:</label>
+                <input type="text" name="description" placeholder="Description" id="description" maxlength="55" required/>
+            </div>
+            <div class="add-product-form">
+                <label for="category-code">Category code:</label>
+                <input type="number" name="category-code" placeholder="Category code" id="category-code" max="255" required/>
+            </div>
+            <div class="add-product-form">
+                <label for="img">Img:</label>
+                <input type="text" name="img" placeholder="Img" id="img" maxlength="50" required/>
+            </div>
+            <div>
+                <input type="submit" value="Submit" class="button-default" name="add-form"/>
+            </div>
+        </form>
+    </div>
+{% endblock %}

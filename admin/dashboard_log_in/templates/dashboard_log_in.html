@@ -1,0 +1,41 @@
+{% extends 'base_Admin.html' %}
+{% set page_head_title = 'dashboard log in page' %}
+
+{% block page_head_css %}
+    <link rel="stylesheet" href="{{ url_for('dashboard_log_in.static', filename='css/dashboard_log_in.css') }}"/>
+{% endblock %}
+
+{% block page_body_main_content %}
+    {% block page_body_sidebar %}
+    {% endblock %}
+    <div id="left-button">
+        <a href="/"><button class="button-default" ><i class="fa fa-home" aria-hidden="true"></i> Return to Hokus Mokus</button></a>
+    </div>
+    {% with messages = get_flashed_messages() %}
+	  {% if messages %}
+	    {% for message in messages %}
+		  <div class="alert-alert-warning-alert-dismissible" role="alert">
+			{{message}}
+		  </div>
+		{% endfor %}
+	  {% endif %}
+	{% endwith %}
+    <div class="log-in-wrapper">
+        <form method=POST class="log-in-form" id="log-in-form">
+            <div class="log-in-heading">
+                <h1 class="heading-1">Enter details..</h1>
+            </div>
+            <div class="log-in">
+                <label for="user-name" >User name:</label>
+                <input type="text" name="user-name" placeholder="User name" id="user-name" required/>
+            </div>
+            <div class="sign-in">
+                <label for="pwd">Password:</label>
+                <input type="password" name="password" placeholder="Password" id="pwd" required/>
+            </div>
+            <div>
+                <input type="submit" value="Submit" class="button-default" name="log-in-form"/>
+            </div>
+        </form>
+    </div>
+{% endblock %}

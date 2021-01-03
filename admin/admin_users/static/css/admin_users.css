@@ -1,0 +1,69 @@
+* { box-sizing: border-box; }
+/*main screen*/
+.main-content{
+    margin-left: 200px; /* Same as the width of the sidebar */
+    width: 84%;
+    display: inline-block;
+    height: 95%;
+    background-color: #272727;
+}
+.container{
+    width: auto;
+    display: inline-block;
+    width: 100%;
+    padding: 2%;
+}
+
+.button-edit{
+    height: 100%;
+    width: 42%;
+}
+.button-delete{
+    height: 100%;
+    width: 50%;
+    margin-left: 3%;
+}
+.button-add{
+    position:relative;
+    display: inline-block;
+    float:right;
+    height: 5%;
+    width: 12%;
+    margin-right: 5%;
+    margin-bottom: 2%;
+}
+.user-name-col{
+    position: relative;
+    max-width: 15%;
+    width: 15%;
+}
+.password-col{
+    position: relative;
+    width: 10%;
+}
+.fname-col{
+    position: relative;
+    width: 10%;
+}
+.lname-col{
+    position: relative;
+    width: 10%;
+}
+.email-col{
+    position: relative;
+    width: 22%;
+}
+.role-col{
+    position: relative;
+    width: 20%;
+}
+.buttons-col{
+    position: relative;
+    max-width: 15%;
+    width: 15%;
+}
+
+.alert-alert-warning-alert-dismissible{
+    margin-left: 16.5%;
+    width: 83%;
+}

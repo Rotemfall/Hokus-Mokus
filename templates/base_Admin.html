@@ -1,0 +1,133 @@
+{#
+Base page variables:
+- page_lang | default: 'en'
+- page_head_title_brand | default: 'Hokus Mokus'
+- page_head_title | default: 'Flask skeleton project'
+#}
+
+{#
+Base page blocks:
+- head
+-- page_head
+-- page_head_meta
+--- page_head_meta_extra
+-- page_head_css
+
+- body
+-- page_body_content
+--- page_body_header
+---- page_body_header_content
+----- page_body_header_content__main_menu
+------ page_body_header_content__main_menu_content
+------- page_body_header_content__main_menu_content_links
+--- page_body_main
+---- page_body_main_content
+--- page_body_footer
+---- page_body_footer_content
+-- page_body_js
+ #}
+ <html lang="{{ page_lang|default("en", true) }}">
+    <head>
+    {% block page_head %}
+        {# Title #}
+        <title>{{ page_head_title_brand|default('Hokus Mokus', true) }} | {{ page_head_title|default('Flask skeleton project', true) }}</title>
+
+        {# Meta tags #}
+        {% block page_head_meta %}
+            <meta charset="UTF-8"/>
+            <meta name="author" content="Rotem"/>
+            <meta name="description" content="Flask skeleton project about Hokus Mokus Shop"/>
+            <meta name="keywords" content="flask, lean, skeleton, project, structure, environment, setup, template, fullstack, web, development, app, university, education"/>
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>Admin Area | Dashboard</title>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> <!--carousel and menu-->
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> <!--for the login icon-->
+            <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet"> <!--for the sidebar icons-->
+            <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!--cursor-->
+            <!-- for the slide action-->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> <!--fonts-->
+            <script src='https://kit.fontawesome.com/a076d05399.js'></script><!--for the icons-->
+            {% block page_head_meta_extra %}{% endblock %}
+        {% endblock %}
+
+        {# favicon #}
+        <link rel="icon" href="{{ url_for('static', filename='media/img/favicon/favicon2.png') }}"/>
+
+        {# Base #}
+{#        TODO: check base tag up in this page#}
+        <base href="{{ url_for('static', filename="group1")}}"/>
+
+        {# CSS #}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/base_admin.css') }}"/>
+        {% block page_head_css %}{% endblock %}
+    {% endblock %}
+    </head>
+    <body>
+        {% block page_body_content %}
+
+            {# Header #}
+            {% block page_body_header %}
+                    {% block page_body_header_content %}
+                            <div id="header">
+                                <p id="header"><i class="fa fa-cogs" aria-hidden="true"></i> Hokus Mokus | Dashboard </p>
+                            </div>
+                    {% endblock %}
+            {% endblock %}
+
+            {# main #}
+            {% block page_body_main %}
+                <main class="page-main">
+                    {% block page_body_sidebar %}
+                    <div class="sidebar">
+                        {% if session.logged_in %}
+                            {%  if session['user']['role'] == "admin"  %}
+                                <div class="welcome">
+                                    <p>Hello {{ session['user']['first_name'] }} </p>
+                                </div>
+                                <ul id="nav">
+                                    <li><a href="{{ url_for('dashboard_main.index') }}"><i class="fa fa-bars" aria-hidden="true"></i> Dashboard</a></li>
+                                    <li><a href="{{ url_for('dashboard_main.index') }}"><i class="fa fa-pie-chart" aria-hidden="true"></i> Graphs</a></li>
+                                    <li><a href="{{ url_for('dashboard_main.index') }}"><i class="fa fa-list-alt" aria-hidden="true"></i> Forms</a></li>
+                                    <li><a href="{{ url_for('admin_categories.index') }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Categories</a></li>
+                                    <li><a href="{{ url_for('admin_product.index') }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Products</a></li>
+                                    <li><a href="{{ url_for('admin_users.index') }}"><i class="fa fa-fw fa-user" aria-hidden="true"></i> Users</a></li>
+                                    <li><a href="{{ url_for('dashboard_logout.index') }}"><i class="fa fa-desktop" aria-hidden="true"></i> Log Out</a></li>
+                                </ul>
+                            {% else %}
+                                <div class="welcome">
+                                    <p>Hello {{ session['user']['first_name'] }} </p>
+                                </div>
+                                <ul id="nav">
+                                    <li><a href="{{ url_for('dashboard_main.index') }}"><i class="fa fa-bars" aria-hidden="true"></i> Dashboard</a></li>
+                                    <li><a href="{{ url_for('dashboard_main.index') }}"><i class="fa fa-pie-chart" aria-hidden="true"></i> Graphs</a></li>
+                                    <li><a href="{{ url_for('dashboard_main.index') }}"><i class="fa fa-list-alt" aria-hidden="true"></i> Forms</a></li>
+                                    <li><a href="{{ url_for('dashboard_logout.index') }}"><i class="fa fa-desktop" aria-hidden="true"></i> Log Out</a></li>
+                                </ul>
+                            {% endif %}
+                        {% else %}
+                            <a href="{{ url_for('dashboard_log_in.index') }}"></a>
+                        {% endif %}
+                    </div>
+                    {% endblock %}
+                    {% block page_body_main_content %}
+                    {% endblock %}
+                </main>
+            {% endblock %}
+
+            {# Footer #}
+            {% block page_body_footer %}
+                <footer class="page-footer">
+                  {% block page_body_footer_content %}
+                      <div class="footer-copyright">
+                          <p class="middle-copyright">Copyright © 2020-2035 Hokus Mokus Inc. All Rights Reserved.</p>
+                      </div>
+                  {% endblock %}
+                </footer>
+            {% endblock %}
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,33 @@
+{% extends 'base_admin.html' %}
+
+{% set page_head_title = 'categories_delete' %}
+
+{% block page_head_css %}
+    <link rel="stylesheet" href="{{ url_for('admin_categories.static', filename='css/categories_delete.css') }}"/>
+{% endblock %}
+{% block page_body_main_content %}
+
+    <div class="container">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+	        {% for message in messages %}
+		    <div class="alert-alert-warning-alert-dismissible" role="alert">
+			    {{message}}
+		    </div>
+		    {% endfor %}
+        {% endif %}
+    {% endwith %}
+        <form action="{{ url_for('categories_delete.index') }}" method=POST class="delete-categories-form" id="delete-form">
+            <div class="delete-form">
+                <h1 class="heading-1">Delete Category</h1>
+            </div>
+            <div class="delete-categories-form">
+                <p> Are you sure you would like to delete category?</p>
+            </div>
+            <div>
+                <input type="submit" value="Delete" class="button-default" name="delete-categories-form"/>
+                <input type=hidden value="{{ category_code }}" name="category-code"/>
+            </div>
+        </form>
+    </div>
+{% endblock %}

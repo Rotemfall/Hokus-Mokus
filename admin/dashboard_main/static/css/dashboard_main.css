@@ -1,0 +1,29 @@
+/*main screen*/
+.main-content{
+    display: inline-block;
+    height: 100%;
+    margin-left: 200px; /* Same as the width of the sidebar */
+    width: 84%;
+    background-color: #272727;
+}
+.container{
+    display: inline-block;
+    width: 100%;
+    padding: 2%;
+}
+.container-wrapper{
+    padding: 1%;
+}
+.top-container{
+    color:#272727;
+    height: 5%;
+    background-color: #ffecb3;
+    opacity: 0.9;
+    padding-left: 1%;
+    font-weight: 350;
+}
+.container-panel{
+    padding: 1%;
+    background-color: #414040;
+    opacity: 0.85;
+}

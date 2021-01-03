@@ -1,0 +1,53 @@
+{% extends 'base_Admin.html' %}
+{% set page_head_title = 'Aadmin_product_page' %}
+
+{% block page_head_css %}
+    <link rel="stylesheet" href="{{ url_for('admin_product.static', filename='css/admin_product.css') }}"/>
+{% endblock %}
+
+{% block page_body_main_content %}
+    <div class="container">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+	        {% for message in messages %}
+		    <div class="alert-alert-warning-alert-dismissible" role="alert">
+			    {{message}}
+		    </div>
+		    {% endfor %}
+        {% endif %}
+    {% endwith %}
+        <div class="main-content">
+            <div class="title">
+                <h1 class="heading-1">Products</h1>
+            </div>
+            <div>
+                <a href="/product_add"><button class="button-add">Add</button></a> <!--changing the href path-->
+                <table style="width:90%">
+                  <tr class="col-table">
+                      <th class="sku-col">Sku</th>
+                      <th class="name-col">Name</th>
+                      <th class="price-col">Price</th>
+                      <th class="description-col">Description</th>
+                      <th class="category-col">Category code</th>
+                      <th class="img-col">Img</th>
+                      <th class="buttons-col"></th> <!-- only for yellow borders in the css-->
+                  </tr>
+                  {% for product in products %}
+                  <tr class="col-values">
+                    <td>{{ product.sku }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.price }}£</td>
+                    <td>{{ product.description }}</td>
+                    <td>{{ product.category_code }}</td>
+                    <td>{{ product.img }}</td>
+                    <td>
+                        <a href="/product_edit?id={{ product.sku }}"><button class="button-edit">Edit</button></a>
+                        <a href="/product_delete?id={{ product.sku }}"><button class="button-delete">Delete</button></a>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

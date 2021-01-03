@@ -1,0 +1,33 @@
+{% extends 'base_admin.html' %}
+
+{% set page_head_title = 'users_delete' %}
+
+{% block page_head_css %}
+    <link rel="stylesheet" href="{{ url_for('admin_users.static', filename='css/users_delete.css') }}"/>
+{% endblock %}
+{% block page_body_main_content %}
+
+    <div class="container">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+	        {% for message in messages %}
+		    <div class="alert-alert-warning-alert-dismissible" role="alert">
+			    {{message}}
+		    </div>
+		    {% endfor %}
+        {% endif %}
+    {% endwith %}
+        <form action="{{ url_for('users_delete.index') }}" method= POST class="delete-users-form" id="delete-form">
+            <div class="delete-form">
+                <h1 class="heading-1">Delete User</h1>
+            </div>
+            <div class="delete-users-form">
+                <p> Are you sure you would like to delete user?</p>
+            </div>
+            <div>
+                <input type="submit" value="Delete" class="button-default" name="delete-users-form"/>
+                <input type=hidden value="{{ email_address }}" name="email-address"/>
+            </div>
+        </form>
+    </div>
+{% endblock %}

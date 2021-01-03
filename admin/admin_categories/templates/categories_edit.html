@@ -1,0 +1,42 @@
+{% extends 'base_Admin.html' %}
+
+{% set page_head_title = 'categories_edit' %}
+
+{% block page_head_css %}
+    <link rel="stylesheet" href="{{ url_for('admin_categories.static', filename='css/categories_edit.css') }}"/>
+{% endblock %}
+{% block page_body_main_content %}
+
+    <div class="container">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+	        {% for message in messages %}
+		    <div class="alert-alert-warning-alert-dismissible" role="alert">
+			    {{message}}
+		    </div>
+		    {% endfor %}
+        {% endif %}
+    {% endwith %}
+        <form method=POST class="edit-form" action="{{ url_for('categories_edit.index') }}" id="edit-form">
+            <div class="edit-form">
+                <h1 class="heading-1">Edit Category</h1>
+            </div>
+            <a href="/category?id={{ category.category_code }}"></a>
+            <div class="edit-categories-form">
+                <label for="category-code" >Category code:</label> <!-- not an editable option-->
+                <input type="number" name="category-code" value="{{ category.category_code }}"  id="category-code" max="255" readonly/>
+            </div>
+            <div class="edit-categories-form">
+                <label for="category-name">Category name:</label>
+                <input type="text" name="category-name" value="{{ category.category_name }}" id="category-name" maxlength="30" required/>
+            </div>
+            <div class="edit-categories-form">
+                <label for="img">Img:</label>
+                <input type="text" name="img" value="{{ category.img }}" id="img" maxlength="50" required/>
+            </div>
+            <div>
+                <input type="submit" value="Submit" class="button-default" name="edit-categories-form"/>
+            </div>
+        </form>
+    </div>
+{% endblock %}

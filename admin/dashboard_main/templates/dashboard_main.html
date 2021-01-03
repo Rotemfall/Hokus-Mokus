@@ -1,0 +1,45 @@
+{% extends 'base_Admin.html' %}
+{% set page_head_title = 'Dashboard main' %}
+
+{% block page_head_css %}
+    <link rel="stylesheet" href="{{ url_for('dashboard_main.static', filename='css/dashboard_main.css') }}"/>
+{% endblock %}
+
+{% block page_body_main_content %}
+    <div id="container">
+        <div class="main-content">
+            {% with messages = get_flashed_messages() %}
+	            {% if messages %}
+	                {% for message in messages %}
+		            <div class="alert-alert-warning-alert-dismissible" role="alert">
+			            {{message}}
+		            </div>
+		            {% endfor %}
+	            {% endif %}
+	        {% endwith %}
+            <div class="title">
+                <h1 class="heading-1">Dashboard</h1>
+            </div>
+            <div class="container">
+                <div class="container-wrapper">
+                    <div class="top-container">News</div>
+                    <div class="container-panel">
+                        <p>This is some simple news.. </p>
+                    </div>
+                </div>
+                <div class="container-wrapper">
+                    <div class="top-container">Massagas</div>
+                    <div class="container-panel">
+                        <p>There are no new massages..</p>
+                    </div>
+                </div>
+                <div class="container-wrapper">
+                    <div class="top-container">Random</div>
+                    <div class="container-panel">
+                        <p>Cras et sapien vitae ante accumsan posuere nec vel dolor. Integer tincidunt suscipit enim a blandit. Sed lectus velit, molestie quis dignissim quis, bibendum sit amet nisl. Praesent auctor, libero quis faucibus feugiat, quam leo mollis lorem, vitae mollis nibh orci eget enim. Pellentesque ante magna, pretium sed porta eu, mattis in turpis. Vivamus luctus iaculis consectetur. Cras in porttitor arcu. Curabitur eros turpis, molestie sed sem eget, cursus dictum mauris. Nullam fringilla et ipsum nec pulvinar. Integer at feugiat elit. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

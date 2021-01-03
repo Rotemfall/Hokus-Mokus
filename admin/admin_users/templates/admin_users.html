@@ -1,0 +1,53 @@
+{% extends 'base_Admin.html' %}
+{% set page_head_title = 'admin_users' %}
+
+{% block page_head_css %}
+    <link rel="stylesheet" href="{{ url_for('admin_users.static', filename='css/admin_users.css') }}"/>
+{% endblock %}
+
+{% block page_body_main_content %}
+    <div id="container">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+	        {% for message in messages %}
+		    <div class="alert-alert-warning-alert-dismissible" role="alert">
+			    {{message}}
+		    </div>
+		    {% endfor %}
+        {% endif %}
+    {% endwith %}
+        <div class="main-content">
+            <div class="title">
+                <h1 class="heading-1">Users</h1>
+            </div>
+            <div>
+                <a href="/users_add"><button class="button-add">Add</button></a><!--to the add form-->
+                <table style="width:90%">
+                  <tr class="col-table">
+                      <th class="user-name-col">User name</th>
+                      <th class="password-col">Password</th>
+                      <th class="fname-col">First name</th>
+                      <th class="lname-col">Last name</th>
+                      <th class="email-col">Email address</th>
+                      <th class="role-col">Role</th>
+                      <th class="buttons-col"></th> <!-- only for yellow borders in the css-->
+                  </tr>
+                {% for user in users %}
+                  <tr class="col-values">
+                    <td>{{ user.user_name }}</td>
+                    <td>{{ user.password }}</td>
+                    <td>{{ user.first_name }}</td>
+                    <td>{{ user.last_name }}</td>
+                    <td>{{ user.email_address }}</td>
+                    <td>{{ user.role }}</td>
+                    <td>
+                        <a href="/users_edit?id={{ user.email_address }}"><button class="button-edit">Edit</button></a>
+                        <a href="/users_delete?id={{ user.email_address }}"><button class="button-delete">Delete</button></a>
+                    </td>
+                  </tr>
+                {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

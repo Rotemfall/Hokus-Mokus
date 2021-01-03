@@ -1,0 +1,41 @@
+{% extends 'base_admin.html' %}
+
+{% set page_head_title = 'categories_add' %}
+
+{% block page_head_css %}
+    <link rel="stylesheet" href="{{ url_for('admin_categories.static', filename='css/categories_add.css') }}"/>
+{% endblock %}
+{% block page_body_main_content %}
+
+    <div class="container">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+	        {% for message in messages %}
+		    <div class="alert-alert-warning-alert-dismissible" role="alert">
+			    {{message}}
+		    </div>
+		    {% endfor %}
+        {% endif %}
+    {% endwith %}
+        <form method=POST class="add-form" id="add-form">
+            <div class="add-form">
+                <h1 class="heading-1">Add Category</h1>
+            </div>
+            <div class="add-categories-form">
+                <label for="category-code" >Category code:</label>
+                <input type="number" name="category-code" placeholder="Category code" id="category-code" max="255" required/>
+            </div>
+            <div class="add-categories-form">
+                <label for="category-name">Category name:</label>
+                <input type="text" name="category-name" placeholder="Category name" id="category-name" maxlength="30" required/>
+            </div>
+            <div class="add-categories-form">
+                <label for="img">Img:</label>
+                <input type="text" name="img" placeholder="Img" id="img" maxlength="50" required/>
+            </div>
+            <div>
+                <input type="submit" value="Submit" class="button-default" name="add-categories-form"/>
+            </div>
+        </form>
+    </div>
+{% endblock %}

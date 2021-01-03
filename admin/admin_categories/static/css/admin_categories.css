@@ -1,0 +1,78 @@
+* { box-sizing: border-box; }
+/*main screen*/
+.main-content{
+    margin-left: 200px; /* Same as the width of the sidebar */
+    width: 84%;
+    display: inline-block;
+    height: 100%;
+    background-color: #272727;
+}
+.container{
+    width: auto;
+    display: inline-block;
+    width: 100%;
+    padding: 2%;
+}
+.container-wrapper{
+    padding: 1%;
+}
+.top-container{
+    color:#272727;
+    height: 5%;
+    background-color: #ffecb3;
+    opacity: 0.9;
+    padding-left: 1%;
+    /*font-weight: 350;*/
+}
+.container-panel{
+    padding: 1%;
+    background-color: #414040;
+    opacity: 0.85;
+}
+.col-category-code{
+    width:15%;
+}
+form.delete-category{
+    display: inline-block;
+    /*background-color: #f4622f*/
+    height: 100%;
+    margin-left: 3%;
+}
+.button-add{
+    position:relative;
+    display: inline-block;
+    float:right;
+    height: 5%;
+    width: 21%;
+    margin-right: 5%;
+    margin-bottom: 2%;
+}
+.button-edit {
+    height: 100%;
+    width: 45%;
+    background-color: #272727;
+}
+
+.col-category-code{
+    position: relative;
+    max-width: 15%;
+    width: 15%;
+}
+.name-col{
+    position: relative;
+    width: 35%;
+}
+.img-col{
+    position: relative;
+    width: 27%;
+}
+.buttons-col{
+    position: relative;
+    max-width: 15%;
+    width: 15%;
+}
+
+.alert-alert-warning-alert-dismissible{
+    margin-left: 16.5%;
+    width: 83%;
+}

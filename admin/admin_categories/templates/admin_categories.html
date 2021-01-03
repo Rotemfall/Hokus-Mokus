@@ -1,0 +1,47 @@
+{% extends 'base_Admin.html' %}
+{% set page_head_title = 'Admin categories page' %}
+
+{% block page_head_css %}
+    <link rel="stylesheet" href="{{ url_for('admin_categories.static', filename='css/admin_categories.css') }}"/>
+{% endblock %}
+
+{% block page_body_main_content %}
+    <div id="container">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert-alert-warning-alert-dismissible" role="alert">
+                    {{message}}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+        <div class="main-content">
+            <div class="title">
+                <h1 class="heading-1">Categories</h1>
+            </div>
+            <div>
+                <a href="/categories_add"><button class="button-add">Add</button></a><!--to the add form-->
+                <table style="width:90%">
+                  <tr class="col-table">
+                      <th class="col-category-code">Category code</th>
+                      <th class="name-col">Category name</th>
+                      <th class="img-col">Img</th>
+                      <th></th> <!-- only for yellow borders in the css-->
+                  </tr>
+                {% for category in categories %}
+                  <tr class="col-values">
+                    <td>{{ category.category_code }}</td>
+                    <td>{{ category.category_name }}</td>
+                    <td>{{ category.img }}</td>
+                    <td>
+                        <a href="/categories_edit?id={{ category.category_code }}"><button class="button-edit">Edit</button></a>
+                        <a href="/categories_delete?id={{ category.category_code }}"><button class="button-delete">Delete</button></a>
+                    </td>
+                  </tr>
+                {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
